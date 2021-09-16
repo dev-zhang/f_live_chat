@@ -37,6 +37,19 @@ public class SwiftFLiveChatPlugin: NSObject, FlutterPlugin {
         case "clearSession":
             LiveChat.clearSession()
             result(nil)
+        case "updateConfiguration":
+            let args = call.arguments as! [String : Any]
+            
+            if let groupId = args["group_id"] as? String {
+                LiveChat.groupId = groupId
+            }
+            if let email = args["email"] as? String {
+                LiveChat.email = email
+            }
+            if let name = args["name"] as? String {
+                LiveChat.name = name
+            }
+            result(nil)
         default:
             result(FlutterMethodNotImplemented)
         }

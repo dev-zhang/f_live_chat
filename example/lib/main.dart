@@ -60,6 +60,16 @@ class _MyAppState extends State<MyApp> {
                 },
                 child: Text('clear session'),
               ),
+              OutlinedButton(
+                onPressed: () async {
+                  await FLiveChat.updateConfiguration(
+                    email: 'abc@gmail.com',
+                    name: 'abc',
+                  );
+                  print('====update configuration success');
+                },
+                child: Text('update configuration'),
+              ),
             ],
           ),
         ),

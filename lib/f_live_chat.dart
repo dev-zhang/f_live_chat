@@ -41,4 +41,22 @@ class FLiveChat {
   static Future<void> showChat() async {
     await _channel.invokeMethod('showChat');
   }
+
+  static Future<void> updateConfiguration({
+    String? groupId,
+    String? name,
+    String? email,
+  }) async {
+    final params = <String, dynamic>{};
+    if (groupId != null) {
+      params['group_id'] = groupId;
+    }
+    if (email != null) {
+      params['email'] = email;
+    }
+    if (name != null) {
+      params['name'] = name;
+    }
+    await _channel.invokeMethod('updateConfiguration', params);
+  }
 }
